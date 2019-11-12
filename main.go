@@ -17,7 +17,7 @@ func main() {
 		{
 			Name:    "create",
 			Aliases: []string{"c"},
-			Usage:   "generate a pattern",
+			Usage:   "generate a cyclic pattern",
 			Action: func(c *cli.Context) error {
 				length, err := strconv.ParseInt(c.Args().First(), 0, 0)
 				if err != nil {
@@ -30,12 +30,12 @@ func main() {
 		{
 			Name:    "offset",
 			Aliases: []string{"o", "search", "s"},
-			Usage:   "search a offset",
+			Usage:   "find the offset",
 			Flags: []cli.Flag{
 				&cli.BoolFlag{
 					Name:    "big",
 					Aliases: []string{"b"},
-					Usage:   "Using big endian",
+					Usage:   "using big endian",
 				},
 			},
 			Action: func(c *cli.Context) error {

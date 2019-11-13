@@ -4,7 +4,8 @@ import (
 	"strings"
 )
 
-const Pattern = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+// Do NOT use 0 because 0x is used only for hex
+const Pattern = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"
 
 func Create(length int) string {
 	var res []byte
@@ -30,7 +31,7 @@ func Create(length int) string {
 }
 
 func Offset(needle string) int {
-	haystack := Create(234484)
+	haystack := Create(3 * len(Pattern) * len(Pattern) * (len(Pattern) - 1))
 	return strings.Index(haystack, needle)
 }
 

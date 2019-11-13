@@ -39,17 +39,17 @@ func main() {
 				},
 			},
 			Action: func(c *cli.Context) error {
-				pattern := c.Args().First()
-				if strings.HasPrefix(pattern, "0x") {
-					x, err := strconv.ParseUint(pattern, 0, 64)
+				needle := c.Args().First()
+				if strings.HasPrefix(needle, "0x") {
+					x, err := strconv.ParseUint(needle, 0, 64)
 					if err != nil {
 						log.Fatal(err)
 					}
-					pattern = cmd.Hex2str(x, c.Bool("big"))
+					needle = cmd.Hex2str(x, c.Bool("big"))
 				}
-				offset := cmd.Offset(pattern)
+				offset := cmd.Offset(needle)
 				if offset != -1 {
-					fmt.Println(pattern, "found at offset", offset)
+					fmt.Println(needle, "found at offset", offset)
 				} else {
 					fmt.Println("not found")
 				}

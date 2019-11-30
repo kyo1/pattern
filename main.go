@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/kyo1/pattern/cmd"
+	"github.com/kyo1/pattern"
 	"github.com/urfave/cli"
 	"log"
 	"os"
@@ -23,7 +23,7 @@ func main() {
 				if err != nil {
 					log.Fatal(err)
 				}
-				fmt.Println(cmd.Create(int(length)))
+				fmt.Println(pattern.Create(int(length)))
 				return nil
 			},
 		},
@@ -45,9 +45,9 @@ func main() {
 					if err != nil {
 						log.Fatal(err)
 					}
-					needle = cmd.Hex2str(x, c.Bool("big"))
+					needle = pattern.Hex2str(x, c.Bool("big"))
 				}
-				offset := cmd.Offset(needle)
+				offset := pattern.Offset(needle)
 				if offset != -1 {
 					fmt.Println(needle, "found at offset", offset)
 				} else {

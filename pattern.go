@@ -53,15 +53,15 @@ func Hex2str(x uint64, bigendian bool) string {
 	}
 	res := string(b)
 	if bigendian {
-		res = Reverse(res)
+		res = reverse(res)
 	}
 	return res
 }
 
-func Reverse(s string) string {
+func reverse(s string) string {
 	res := []rune(s)
-	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
-		res[i], res[j] = res[j], res[i]
+	for l, r := 0, len(s)-1; l < r; l, r = l+1, r-1 {
+		res[l], res[r] = res[r], res[l]
 	}
 	return string(res)
 }
